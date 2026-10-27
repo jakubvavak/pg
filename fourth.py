@@ -15,13 +15,7 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
     radek = cilova_pozice[0]
     sloupec = cilova_pozice[1]
 
-    if radek < 0:
-        return "Mimo šachovnici"
-    elif radek > 8:
-        return "Mimo šachovnici"
-    elif sloupec < 0:
-        return "Mimo šachovnici"
-    elif sloupec > 8:
+    if radek < 0 or radek > 8 or sloupec < 0 or sloupec > 8:
         return "Mimo šachovnici"
     
     # 2. KROK: Je cílová pozice volná?
@@ -64,5 +58,5 @@ if __name__ == "__main__":
     # Testy pro jezdce
     print(je_tah_mozny(jezdec, (5, 4), obsazene_pozice))  # True (tvar L: 2 nahoru, 1 doprava)
     print(je_tah_mozny(jezdec, (5, 5), obsazene_pozice))  # False (obsazeno)
-    print(je_tah_mozny(jezdec, (4, 6), obsazene_pozice))  # True (tvar L)
+    print(je_tah_mozny(jezdec, (4, 6), obsazene_pozice))  # True (tvar L)   (zde je chyba, má to být False, nebo (4,5))
     print(je_tah_mozny(jezdec, (10, 3), obsazene_pozice)) # False (mimo šachovnici)
