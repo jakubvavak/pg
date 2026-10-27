@@ -13,24 +13,24 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
     # 1. KROK: Je cílová pozice na šachovnici? (řádky i sloupce 1 až 8)
     # Zde student napíše jednoduchou podmínku s and / or
     radek = cilova_pozice[0]
-    sloupec = cilova_pozice
+    sloupec = cilova_pozice[1]
 
-    if radek < 0
-        return False
-    elif radek > 8
-        return False
-    elif sloupec < 0
-        return False
-    elif sloupec > 8
-        return False
+    if radek < 0:
+        return "Mimo šachovnici"
+    elif radek > 8:
+        return "Mimo šachovnici"
+    elif sloupec < 0:
+        return "Mimo šachovnici"
+    elif sloupec > 8:
+        return "Mimo šachovnici"
     
     # 2. KROK: Je cílová pozice volná?
     # Nápověda: operátor 'in' nebo 'not in' pro množiny
-    if cilova_pozice in obsazene_pozice
-        return False
+    if cilova_pozice in obsazene_pozice:
+        return "Pozice je obsazená"
     
     rozdil_radku = abs (cilova_pozice[0] - aktualni_pozice[0])
-    rozdil_radku = abs (cilova_pozice[1] - aktualni_pozice[1])
+    rozdil_sloupce = abs (cilova_pozice[1] - aktualni_pozice[1])
 
     # 3. KROK: Pohyb podle typu figury
     if typ == "král":
@@ -38,16 +38,16 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
         # Nápověda: rozdíl řádků a sloupců (absolutní hodnota abs()) musí být <= 1.
         if rozdil_radku <= 1 and rozdil_sloupce <= 1:
             if rozdil_radku != 0 or rozdil_sloupce != 0:
-                return True
+                return "Lze se přesunout"
         
     elif typ == "jezdec":
         # Jezdec se pohybuje ve tvaru L (např. rozdíl řádků je 2 a sloupců 1, nebo naopak).
-        if rozdil_radku == 2 and rozdil_sloupce == 1
-            return True
-        if rozdil radku == 1 and rozdil_sloupce == 2
-            retrun True
+        if rozdil_radku == 2 and rozdil_sloupce == 1:
+            return "Lze se přesunout"
+        if rozdil_radku == 1 and rozdil_sloupce == 2:
+            return "Lze se přesunout"
         
-    else return False
+    return "Nelze se přesunout"
 
 
 if __name__ == "__main__":
